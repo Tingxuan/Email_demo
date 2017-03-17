@@ -1,16 +1,17 @@
 import smtplib
 
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from email.header import Header
 
 
-mail_host = "smtp.qq.com"
-mail_user = "deemo_zhang"
-mail_pass = "xjrzswiohjczbfbe"
+mail_host = 'smtp.163.com'
+mail_user = 'zhangtingxuan'
+mail_pass = 'ztx123456'
 
 
-sender = 'kamitake@2980.com'
-receivers = ['892339906@qq.com']
+sender = 'zhangtingxuan@163.com'
+receivers = ['kamitake@2980.com']
 
 message = MIMEText('Python 发送邮件测试', 'plain', 'utf-8')
 message['From'] = Header("菜鸟教程", 'utf-8')
@@ -22,7 +23,7 @@ message['subject'] = Header(subject, 'utf-8')
 
 try:
     smtpObj = smtplib.SMTP()
-    smtpObj.connect(mail_host, 465)
+    smtpObj.connect(mail_host, 25)
     smtpObj.login(mail_user, mail_pass)
     smtpObj.sendmail(sender, receivers, message.as_string())
     print("邮件发送成功")
